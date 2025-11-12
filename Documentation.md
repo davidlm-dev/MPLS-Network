@@ -16,9 +16,9 @@ In this project, I describe how I set up an MPLS network server, including OSPF 
 
 ## Network Topology
 
-I designed the network topology as shown below:
+I configured the network topology as shown below:
 
-![MPLS Topology](images/subnet.jpg)
+![MPLS Topology](images/subnett.jpg)
 
 ## IP Addressing and Subnet Planning
 
@@ -100,7 +100,7 @@ These commands helped me identify and fix any MPLS label or interface issues.
 
 After MPLS was working, I configured two static MPLS TE tunnels. The first tunnel follows the path: LER1-LSR4-LER2, while the second follows: LER2-LSR2-LSR1-LER1. I set up both tunnels using explicit paths.
 
-![MPLS paths](topologymplste.png)
+![MPLS paths](images/MPLSTunnels.jpg)
 ![Tunnel Configuration](images/tunnel1config.png)
 ![Explicit Path Configuration](images/tunnel1route.png)
 
@@ -123,7 +123,7 @@ After confirming that everything was working properly, as shown in the tracerout
 
 In this topology, I configured local protection for several links using Fast Reroute (FRR), which is a pre-signaled backup tunnel. If the original tunnel link fails, the backup tunnel is activated to ensure traffic can still reach its destination.
 
-![FRR Topology](Frrtopology)
+![FRR Topology](images/MPLSFRR.jpg)
 
 To achieve this, I configured RSVP (Resource Reservation Protocol) using the command `ip rsvp signalling hello` globally in the router configuration mode and on the interfaces I wanted to protect. After that, I created backup tunnels, assigned explicit paths, and notified the LERs about fast reroute and record reroute.
 
